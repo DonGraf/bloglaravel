@@ -3,6 +3,7 @@
     
 <h3>Crear Post</h3>
 <hr>
+@include('fragment._errors-form')
 <form action="{{route('post.store')}}" method="post">
     @csrf
     <label for="">Título</label>
