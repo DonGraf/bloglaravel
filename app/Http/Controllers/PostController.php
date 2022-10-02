@@ -25,6 +25,8 @@ class PostController extends Controller
     public function create()
     {
         //
+        $categories = Category::pluck('id','title');
+        return view('post.create', compact('categories')); 
     }
 
     /**
@@ -36,6 +38,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $data = array_merge($request->all(),['image'=>'']);
+        Post::create($data);
     }
 
     /**
