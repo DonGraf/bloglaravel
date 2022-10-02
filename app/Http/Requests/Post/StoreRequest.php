@@ -3,9 +3,20 @@
 namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StoreRequest extends FormRequest
 {
+    protected function prepareForValidation()
+    {
+            //Laravel 5 
+            //'slug' => Str::of($this->title)->slug();
+            //'slug' => Str::of($this->title)->slug()->append('-adicional');
+            //Laravel 7
+            //$this->merge(['slug'=>Str::slug($this->title)]);
+            //Laravel 9
+            $this->merge(['slug' => str($this->title)->slug()]);
+    }
     /**
      * Determine if the user is authorized to make this request.
      *
