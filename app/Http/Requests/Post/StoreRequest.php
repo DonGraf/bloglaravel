@@ -15,7 +15,7 @@ class StoreRequest extends FormRequest
             //Laravel 7
             //$this->merge(['slug'=>Str::slug($this->title)]);
             //Laravel 9
-            $this->merge(['slug' => str($this->title)->slug()]);
+            $this->merge(['slug' => str($this->title)->slug()]) ;
     }
     /**
      * Determine if the user is authorized to make this request.
@@ -40,7 +40,7 @@ class StoreRequest extends FormRequest
             "category_id"=>"required|integer",
             "description"=>"required|min:5|max:500",
             "posted"=>"required",
-            "slug"=>"required|min:5",
+            "slug"=>"required|min:5|unique",
         ];
     }
 }
