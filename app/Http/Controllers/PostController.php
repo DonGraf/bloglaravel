@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Post\PutRequest;
 use App\Http\Requests\Post\StoreRequest;
 use App\Models\Category;
 use App\Models\Post;
@@ -65,6 +66,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
+        $categories = Category::pluck('id','title');
+        return view('post.edit', compact('categories','post')); 
     }
 
     /**
@@ -74,9 +77,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PutRequest $request, Post $post)
     {
         //
+        $post->update($request->validated());
     }
 
     /**
@@ -87,6 +91,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        echo "elmimiar";
     }
 }

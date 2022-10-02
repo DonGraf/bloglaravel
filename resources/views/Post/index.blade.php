@@ -18,7 +18,15 @@
             <td>{{$p->title}}</td>
             <td></td>                
             <td>{{$p->posted}}</td>
-            <td> editar eliminar</td>
+            <td>
+                <a href="{{route('post.show',$p)}}">Ver
+                </a>
+                <a href="{{route('post.edit',$p)}}">editar
+                </a>  
+                <form action="{{route('post.destroy',$p)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                <button type="submit">eliminar</button></form>
         </tr>
         @endforeach
     </tbody>
