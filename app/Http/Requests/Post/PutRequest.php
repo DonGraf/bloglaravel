@@ -30,6 +30,7 @@ class PutRequest extends FormRequest
             "description"=>"required|min:5|max:500",
             "posted"=>"required",
             "slug"=>"required|min:5|unique:posts,slug,".$this->route("post")->id,
+            "image"=>"mimes:jpeg,jpg,png|max:10240",
         ];
     }
 }

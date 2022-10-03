@@ -19,5 +19,9 @@
     <option {{ old("posted",$post->posted)== "y" ? "selected" : "" }} value="y">Si</option>
     <option {{ old("posted",$post->posted)== "n" ? "selected" : "" }} value="n">No</option>
 </select><br>
+@if (isset($task)&& $task == "edit")
+    <label for="">Imagen</label>
+    <input type="file" name="image" src="" alt="Imagen">
+@endif
 <hr>
 <button type="submit">Enviar Post</button>

@@ -80,8 +80,14 @@ class PostController extends Controller
      */
     public function update(PutRequest $request, Post $post)
     {
+        $data = $request->validated();
         //
-        $post->update($request->validated());
+        if (isset($data["image"])) {
+            $data["image"] = $filename = time().".".$data["image"]->extension();
+            $request->image->move(public_path("image"), $filename);
+        }
+    
+        $post->update($data);
         return to_route('post.index')->with('status','Post Actualizado');
     }
 
