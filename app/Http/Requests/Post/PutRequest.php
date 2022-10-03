@@ -29,7 +29,7 @@ class PutRequest extends FormRequest
             "category_id"=>"required|integer",
             "description"=>"required|min:5|max:500",
             "posted"=>"required",
-          //  "slug"=>"required|min:5|unique",
+            "slug"=>"required|min:5|unique:posts,slug,".$this->route("post")->id,
         ];
     }
 }
