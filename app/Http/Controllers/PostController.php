@@ -81,6 +81,7 @@ class PostController extends Controller
     {
         //
         $post->update($request->validated());
+        return redirect()->back();
     }
 
     /**
