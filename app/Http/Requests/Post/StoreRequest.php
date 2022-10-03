@@ -15,7 +15,7 @@ class StoreRequest extends FormRequest
             //Laravel 7
             //$this->merge(['slug'=>Str::slug($this->title)]);
             //Laravel 9
-            $this->merge(['slug' => str($this->title)->slug()]) ;
+            $this->merge(['slug' => str($this->slug)->slug()]) ;
     }
     /**
      * Determine if the user is authorized to make this request.

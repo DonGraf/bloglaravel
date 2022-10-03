@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(2);
-    return view("post.index",compact('posts'));
+        return view("post.index",compact('posts'));
     }
 
     /**
@@ -30,7 +30,8 @@ class PostController extends Controller
     {
         //
         $categories = Category::pluck('id','title');
-        return view('post.create', compact('categories')); 
+        $post = new Post();
+        return view('post.create', compact('categories', 'post')); 
     }
 
     /**
@@ -44,6 +45,7 @@ class PostController extends Controller
         //
         $data = array_merge($request->all(),['image'=>'']);
         Post::create($data);
+        return to_route('post.index');
     }
 
     /**
@@ -54,7 +56,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show',compact('post')); 
     }
 
     /**
@@ -81,7 +83,7 @@ class PostController extends Controller
     {
         //
         $post->update($request->validated());
-        return redirect()->back();
+        return to_route('post.index');
     }
 
     /**
@@ -92,6 +94,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        echo "elmimiar";
+        $post->delete();
+        return to_route('post.index');
     }
 }
