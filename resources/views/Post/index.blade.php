@@ -1,6 +1,7 @@
 @extends('layout')
 @section('content')
- <a href="{{route('post.create')}}">Crear post</a>   
+ <a href="{{route('post.create')}}">Crear Post</a>  
+ <a href="{{route('category.index')}}">Modulo Categoria</a>    
 <h3>Inicio </h3>
 <hr>
 <table>
