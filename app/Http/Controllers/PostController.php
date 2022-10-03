@@ -6,7 +6,6 @@ use App\Http\Requests\Post\PutRequest;
 use App\Http\Requests\Post\StoreRequest;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -45,7 +44,7 @@ class PostController extends Controller
         //
         $data = array_merge($request->all(),['image'=>'']);
         Post::create($data);
-        return to_route('post.index');
+        return to_route('post.index')->with('status','Post Agregado');
     }
 
     /**
@@ -83,7 +82,7 @@ class PostController extends Controller
     {
         //
         $post->update($request->validated());
-        return to_route('post.index');
+        return to_route('post.index')->with('status','Post Actualizado');
     }
 
     /**
@@ -95,6 +94,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route('post.index');
+        return to_route('post.index')->with('status','Post Eliminado');
     }
 }
